@@ -1,0 +1,28 @@
+body{
+    line-height: 20px;
+    color: #555555;
+    background: url(img/bg.jpg) repeat;
+}
+
+label{
+    margin-top: 6px;
+    font-size: 18px;
+}
+
+.divider{
+    height: 6px;
+    background: url(img/bg-diag.png) repeat-x;
+    margin: 1px 0px 5px;
+}
+
+.box{
+    width: 800px;
+    margin-top: 15px;
+    background-color: #ffffff;
+    border-left: solid 4px #fff;
+    border-radius: 6px;
+    -webkit-box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+    -moz-box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+    -o-box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+    box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+}

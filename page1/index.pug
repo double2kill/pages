@@ -1,0 +1,45 @@
+doctype html
+html
+  head
+    meta(charset="utf-8")
+    title #{title}
+    link(href="libs/bootstrap/dist/css/bootstrap.min.css", rel="stylesheet")
+    link(href="index.css", rel="stylesheet")
+    script(src="libs/jquery/dist/jquery.min.js")
+    script(src="libs/bootstrap/dist/js/bootstrap.min.js")
+  body
+    .container.box
+      .divider
+      center.alert.alert-warning 请用电脑打开此网站，暂不支持手机
+      form.form-horizontal(action="/main/update", method="post")
+        center
+          h2 信息录入
+        input(type='hidden', name='csrfmiddlewaretoken', value='k02GnITDp21znHYtB4nOcUbcUhoIaMG0')
+        .form-group
+          .col-sm-4
+            label.pull-right(for='name') 名字
+          .col-sm-4
+            input#name.form-control(type='text', name='name', value='', placeholder='必填')
+        .form-group
+          .col-sm-4
+            label.pull-right(for='phone')  手机号 
+          .col-sm-4
+            input#phone.form-control(type='text', name='phone', value='', placeholder='15966668888')
+        .form-group
+          .col-sm-4
+            label.pull-right(for='state') 目前状态 
+          .col-sm-4
+            input#state.form-control(type='text', name='state', value='', placeholder='读博/xxxx大学')
+        .form-group
+          .col-sm-4
+            label.pull-right(for='city') 城市/国家
+          .col-sm-4
+            input#city.form-control(type='text', name='city', value='', placeholder='北京/中国')
+        center
+          .form-group
+            button.btn.btn-primary(type='submit') 提交
+      form(action='/main/download', method='post')
+        input(type='hidden', name='csrfmiddlewaretoken', value='k02GnITDp21znHYtB4nOcUbcUhoIaMG0')
+        center
+          button.btn.btn-success(type='submit') 下载当前通讯录版本
+      br  
