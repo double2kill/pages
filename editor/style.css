@@ -12,11 +12,6 @@ body{
   color: #e85a71;
 }
 
-#editor textarea {
-  height: 600px;
-  margin-bottom: 30px;
-}
-
 .markdown-body {
   padding: 20px;
 }

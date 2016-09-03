@@ -16,7 +16,7 @@
     </div>
     <div>
       <div class="col-xs-12 col-md-6" v-if="!isfull">
-        <textarea class="form-control shado" v-model="input" debounce="300"></textarea>
+        <textarea class="form-control shado" v-model="input" debounce="300" rows="24"></textarea>
       </div>
       <div class="col-xs-12  content" v-bind:class="{'col-md-6': !isfull, 'content-full': isfull}">
         <div class="panel panel-default">
