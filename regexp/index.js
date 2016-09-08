@@ -3,14 +3,20 @@ var _output = document.getElementById('output');
 var _inputWrap = document.getElementById('input-wrap');
 var _history = document.getElementById('history');
 
+var string2html = function(string){
+  var _html = string.replace(/\r|\n/g,'<br>');
+  _html = _html.replace(/\s/g,'&nbsp;')
+  return _html;
+}
+
 var tryEval = function(text){
   try
   {
     var re = eval(text);
-    return re;
+    return re.toString();
   }
   catch(err){
-    return err;
+    return err.toString();
   }
 }
 
@@ -18,7 +24,9 @@ _input.addEventListener("keydown", function(e){
   var theEvent = e || window.event;    
   var code = theEvent.keyCode || theEvent.which || theEvent.charCode; 
 
-  var update = function(_this, e, text = '', jump = 1){
+  var update = function(_this, e, text, j){
+    var text = t || '';
+    var jump = j || '1';
     var start = _this.selectionStart;
     var end = _this.selectionEnd;
     var target = e.target;
@@ -29,23 +37,22 @@ _input.addEventListener("keydown", function(e){
     _this.selectionStart = _this.selectionEnd = start + jump;
   }
 
-  // 只输入Enter，表示运行
-  if(!e.ctrlKey && code == 13){
+  // 输入Ctrl+Enter，表示运行
+  if(code == 13){
     e.preventDefault();
     var result = tryEval(_input.value);
-    _history.innerHTML += _input.value + '\n';
-    _history.innerHTML += result + '\n';
+    var inputText = _input.value.toString();
+    _history.innerHTML = "<div class='history-box'>"
+                       + "<div class='box-title'><span>&gt; </span>" + string2html(inputText) +"</div>"
+                       + "<div class='box-content'><span>&lt; </span>" + string2html(result) +"</div>"
+                       + "</div>"
+                       + _history.innerHTML
     _input.value = '';
   }
   // 输入Tab，表示制表符
   if(code == 9){
     e.preventDefault();
     update(this, e, "  ", 2);
-  }
-  // 输入Ctrl+Enter，表示回车
-  if (e.ctrlKey && code == 13) {
-    e.preventDefault();
-    update(this, e, "\n");
   }
   if (e.shiftKey && code == 57) {
     e.preventDefault();
