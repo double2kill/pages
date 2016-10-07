@@ -1,0 +1,111 @@
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>可拖拽文本框</title>
+  <style type="text/css">
+    body{
+      margin: 0px;
+      padding: 50px;
+      font-size: 14px;
+      color: #333;
+    }
+    .panel{
+      width: 400px;
+      height: 240px;
+      min-width: 150px;
+      min-height: 100px;
+      border: 1px solid #ccc;
+      position: relative;
+    }
+    .panel .title{
+      background-color: #eee;
+      text-align: center;
+      line-height: 30px;
+      border: 1px solid #fff;
+      font-weight: bold;
+    }
+    .ui-r{
+      position: absolute;
+      right: -5px;
+      top: 0px;
+      width: 10px;
+      height: 100%;
+      cursor: e-resize;
+    }
+    .ui-b{
+      position: absolute;
+      bottom: -5px;
+      left: 0px;
+      width: 100%;
+      height: 10px;
+      cursor: s-resize;
+    }
+    .ui-rb{
+      position: absolute;
+      bottom: -5px;
+      right: -5px;
+      width: 15px;
+      height: 15px;
+      cursor: se-resize;
+    }
+  </style>
+</head>
+<body>
+  <div class="panel" id="ui-resizable">
+    <div class="title">文本框是可拖拽的哦~</div>
+  </div>
+  <script type="text/javascript">
+
+    function resizable (panelId) {
+      var panel = document.getElementById(panelId);
+      var r = document.createElement("div");
+      var b = document.createElement("div");
+      var rb = document.createElement("div");
+      r.class = r.className = 'ui-r ui-ctrl';
+      b.class = b.className = 'ui-b ui-ctrl';
+      rb.class = rb.className = 'ui-rb ui-ctrl';
+      panel.appendChild(r);
+      panel.appendChild(b);
+      panel.appendChild(rb);
+
+      var movex = function(e){
+        var e = e || window.event;
+        var newwidth = e.pageX - panel.offsetLeft;
+        panel.style.width = newwidth;
+      } 
+      r.addEventListener('mousedown', function(){
+        document.addEventListener('mousemove', movex);
+      })
+      r.addEventListener('mouseup', function(){
+        document.removeEventListener('mousemove', movex);
+      })
+      var movey = function(e){
+        var e = e || window.event;
+        var newheight = e.pageY - panel.offsetTop;
+        panel.style.height = newheight;
+      } 
+      b.addEventListener('mousedown', function(){
+        document.addEventListener('mousemove', movey);
+      })
+      b.addEventListener('mouseup', function(){
+        document.removeEventListener('mousemove', movey);
+      })
+      var movexy = function(e){
+        var e = e || window.event;
+        var newwidth = e.pageX - panel.offsetLeft;
+        var newheight = e.pageY - panel.offsetTop;
+        panel.style.width = newwidth;
+        panel.style.height = newheight;
+      } 
+      rb.addEventListener('mousedown', function(){
+        document.addEventListener('mousemove', movexy);
+      })
+      rb.addEventListener('mouseup', function(){
+        document.removeEventListener('mousemove', movexy);
+      })
+    }
+
+    resizable("ui-resizable");
+  </script>
+</body>
+</html>
