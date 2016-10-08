@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>clip裁剪</title>
+  <style type="text/css">
+    body {
+      moz-user-select: -moz-none;
+      -moz-user-select: none;
+      -o-user-select:none;
+      -khtml-user-select:none;
+      -webkit-user-select:none;
+      -ms-user-select:none;
+      user-select:none;
+      background-color: grey;
+    }
+    .box {
+      position: relative;
+      margin-top: 100px;
+      margin-left: 100px;
+    }
+    #img1 {
+      position:absolute;
+      opacity: 0.5;
+    }
+    #img2 {
+      position:absolute;
+      clip:rect(0px,200px,200px,0px);
+    }
+    .main {
+      cursor: move;
+      position: absolute;
+      width: 200px;
+      height: 200px;
+      border: 2px solid #fff;
+      margin-left: -2px;
+      margin-top: -2px;
+    }
+    .minDiv {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      background-color: #fff;
+      margin-left: -5px;
+      margin-top: -5px;
+    }
+    .square1{ cursor: nw-resize; }
+    .square2{ left:50%; cursor: n-resize; }
+    .square3{ left:100%; cursor: ne-resize; }
+    .square4{ left:100%; top:50%; cursor: e-resize; }
+    .square5{ left:100%; top:100%; cursor: se-resize; }
+    .square6{ left:50%; top:100%; cursor: s-resize; }
+    .square7{ top:100%; cursor: sw-resize; }
+    .square8{ top:50%; cursor: w-resize; }
+  </style>
+</head>
+<body ondragstart="return false">
+  <div class="box">
+    <img src="demo.jpg" id="img1">
+    <img src="demo.jpg" id="img2">
+    <div class="main">
+      <div class="minDiv square1"></div>
+      <div class="minDiv square2"></div>
+      <div class="minDiv square3"></div>
+      <div class="minDiv square4"></div>
+      <div class="minDiv square5"></div>
+      <div class="minDiv square6"></div>
+      <div class="minDiv square7"></div>
+      <div class="minDiv square8"></div>
+    </div>
+  </div>
+</body>
+</html>
